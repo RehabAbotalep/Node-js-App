@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="mainheading">
+        <h1 class="sitetitle">QA</h1>
+        <p class="lead">
+            Ask your question and wait answers
+        </p>
+    </div>
+    <section class="featured-posts">
+        <div class="card-deck">
+            <div class="card" *ngFor="let tag of tags">
+                <div class="card-block">
+                    <h1 class="card-title"><a href="">{{tag.name}}</a></h1>
+                    <p class="card-text">
+                        {{tag.description}}.
+                    </p>
+      
+                    <p class="card-text">
+                        <small class="text-muted">
+                            Last updated {{tag.updatedAt | date}}
+                        </small>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>

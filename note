@@ -1,0 +1,22 @@
+
+features 
+1-register(name-email-password)//done
+2-login(email-password)//done
+3-sociallogin(ask for it) //next phase:)
+4-update profile //done
+5-get my profile data//done as backend
+6-ask question(title-description-tags-must be login//done
+7-answer question(answer) loged in //done
+8-Home show top questions(depends on what??) //done
+9-questions show all questions(paginated) may be filterd(newest-unAnswered-active -.... ) 
+10-show single question //done
+11-tags show all tags(paginated) title-description-no of questions- //done
+    no of questions asked today-no of questions asked this week
+12-users show all users(name-image-location) 
+13-show single user
+14-logout
+15-static pages(contact us- privacy -terms&conditions)//next phase:)
+16-user active account //done
+17-forget password
+18-submit new passowrd
+

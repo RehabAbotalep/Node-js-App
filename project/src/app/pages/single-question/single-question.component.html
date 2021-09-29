@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="mainheading">
+        <h1 class="sitetitle">QA</h1>
+        <p class="lead">
+            Ask your data and wait answers
+        </p>
+    </div>
+    <section class="featured-posts">
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h3><b>{{question.title}}</b></h3>
+                    </div>
+                    <p>Asked-at {{question.createdAt|date}} &nbsp; Viewed : {{question.views}} times</p> 
+                    
+                    <hr>
+                    <p>{{question.description}}</p>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <a routerLink="#" class="btn btn-outline-primary btn-sm" *ngFor="let tag of question.tags;">
+                                {{tag.name}}
+                            </a>
+                        </div>
+                        <div class="text-right">
+                           <p>Asked-by : {{question.userId.name}}&nbsp;
+                            <img [src]="question.userId.image != null ? question.userId.image  : defaultImageUrl" alt="Avatar">
+                           </p>
+                           
+                        </div>
+                   </div>
+                   <hr>
+                   <h2>{{question.answers.length}} Answers</h2>
+                   <div *ngFor="let answer of question.answers">
+                       <p>{{answer.answer}}</p>
+                       <p class="text-right">Answered-by : {{answer.userId.name}}</p>
+                       <hr>
+                   </div>
+                  
+                 
+                </div>
+              </div><br><br>
+              <form [formGroup]="answerForm" (ngSubmit)="submitAnswer()">
+                <div class="mb-3">
+                    <textarea class="form-control" placeholder="Desription" style="height: 100px" formControlName="answer">
+                    </textarea>
+                    <span *ngIf="answer?.invalid" class="error">
+                        required
+                    </span>
+                </div><br>
+                <div class="mb-3">
+                    <button class="btn btn-success" type="submit">Answer</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>

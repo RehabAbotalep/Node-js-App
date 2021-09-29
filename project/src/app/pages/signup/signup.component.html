@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="mainheading">
+        <h1 class="sitetitle">QA</h1>
+        <p class="lead">
+            Ask your question and wait answers
+        </p>
+    </div>
+    <section class="d-flex justify-content-center">
+        <form id="signup" #registerForm="ngForm" (ngSubmit)="handleRegister(registerForm)">
+
+            <div class="header">
+                <br>
+                <h3>Sign Up</h3>
+
+                <p>You want to fill out this form</p>
+
+            </div>
+
+            <div class="sep"></div>
+
+            <div class="inputs">
+                <input type="text" placeholder="name" name="name" [(ngModel)]="user.name" #name="ngModel" required
+                    autofocus />
+            </div>
+            <span class="error" *ngIf="name.invalid && (name.touched||registerForm.submitted||name.dirty)">
+                <p *ngIf="name.errors?.required">required</p>
+            </span>
+            <div class="inputs">
+                <input type="email" placeholder="e-mail" name="email" [(ngModel)]="user.email" #email="ngModel" required email
+                    autofocus />
+                <span class="error" *ngIf="email.invalid && (email.touched||registerForm.submitted||email.dirty)">
+                    <p *ngIf="email.errors?.required">required</p>
+                    <p *ngIf="email.errors?.email">Invalid email</p>
+                </span>
+            </div>
+            <div class="inputs">
+                <input type="password" placeholder="Password" name="password" [(ngModel)]="user.password"
+                    #password="ngModel" required minlength="6" />
+                <span class="error"
+                    *ngIf="password.invalid && (password.touched||registerForm.submitted||password.dirty)">
+                    <p *ngIf="password.errors?.required">required</p>
+                    <p *ngIf="password.errors?.minlength">Invalid length</p>
+                </span>
+
+                <div class="checkboxy">
+                    <input name="cecky" id="checky" value="1" type="checkbox" /><label class="terms">I accept the terms
+                        of use</label>
+                </div>
+
+                <button id="submit" type="submit">SIGN UP</button>
+
+            </div>
+
+        </form>
+    </section>
+</div>

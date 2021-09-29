@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="mainheading">
+        <h1 class="sitetitle">QA</h1>
+        <p class="lead">
+            Ask your question and wait answers&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-primary" routerLink="/edit-profile">Edit-Profile</button>
+        </p>
+    </div>
+    <section class="featured-posts">
+        <div class="container">
+            <div class="row">
+                <h1>States</h1>
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <p class="text-left">Answers : {{answeredQuestions.length}}</p>
+                                <p class="text-center">questions : {{askedQuestions.length}}</p>
+                                <p class="text-right">reputation : 0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div *ngIf="about; else elseBlock">{{user.aboutMe}}</div>
+                                <ng-template #elseBlock>Your about me section is currently blank. Would you like to add one?
+                                    <a routerLink="/edit-profile">Edit profile</a>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h1>Asked questions</h1>
+            <div class="card" *ngFor="let asked of askedQuestions">
+                <div class="card-header">
+                    <h3 class="card-title" routerLink="/questions/{{asked._id}}">
+                        <a style="color: darkblue; cursor:pointer;">{{asked.title}}</a>
+                    </h3>
+                </div>
+            </div>
+            <br>
+            <hr>
+
+            <h1>Answered questions</h1>
+            <div class="card" *ngFor="let answered of answeredQuestions">
+                <div class="card-header">
+                    <h3 class="card-title" routerLink="/questions/{{answered._id}}">
+                        <a style="color: darkblue; cursor:pointer;">{{answered.title}}</a>
+                    </h3>
+                </div>
+            </div>
+            <br>
+        
+        </div>
+        
+    </section>
+</div>
