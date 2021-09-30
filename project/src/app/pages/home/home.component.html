@@ -23,7 +23,7 @@
                                 {{question.description}}.
                             </p>
       
-                            <a routerLink="/tags" class="btn btn-outline-primary btn-sm" *ngFor="let tag of question.tags;">
+                            <a routerLink="tags/{{tag._id}}/questions" class="btn btn-outline-primary btn-sm" *ngFor="let tag of question.tags;">
                                 {{tag.name}}
                             </a>&nbsp;
                             <a  class="btn btn-outline-secondary btn-sm">
@@ -41,25 +41,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="card-columns listfeaturedtag">
-            <div class="card" *ngFor="let question of questions">
-                <div class="card-header">
-                    Asked-by : {{question.userId.name}}
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{question.title}}</h5>
-                    <p class="card-text">{{question.description}}.</p>
-                    <a routerLink="/tags" class="btn btn-success" *ngFor="let tag of question.tags">{{tag.name}}</a>
-                </div>
-                <div class="card-footer text-muted">
-                    <p class="text-left">{{question.createdAt | date}}</p>
-                    <p class="text-right"> <span class="btn btn-danger">Down</span>&nbsp;
-                        <span class="btn btn-warning">Up</span>
-                    </p>
-
-                </div>
-            </div>
-        </div> -->
 
     </section>
 </div>

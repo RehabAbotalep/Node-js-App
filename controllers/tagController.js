@@ -47,13 +47,12 @@ class TagController{
 
     static async tagQuestions(req, res){
         try{
-            const questions = await Question.find()
+            let limit = req.query._limit ?? 20
+            // const questions = await Question.all(limit)
 
-            const tagQuestions = questions.filter(question => {
-                return question.tags.includes(req.params.id)
-            });
+            const questions = await Tag.questions(req.params.id)
             
-            res.status(200).send({status:true, data:tagQuestions, message:"tag question"})
+            res.status(200).send({status:true, data:questions, message:"tag question"})
     
         }catch(e){
             res.status(500).send({status:false, data:e.message, message:"Error"})

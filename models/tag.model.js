@@ -23,6 +23,11 @@ tagSchema.methods.toJSON = function(){
     return tag
 }
 
+tagSchema.statics.questions = async(id) => {
+    return await Question.find({ "tags": { _id: id } })
+                        .populate('tags', 'id name')
+}
+
 
 
 const Tag = mongoose.model('tags', tagSchema)

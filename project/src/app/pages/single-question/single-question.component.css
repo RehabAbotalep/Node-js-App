@@ -3,3 +3,7 @@ img {
     width: 7%;
     height: 10%;
   }
+
+  .error{
+    color: red;
+  }

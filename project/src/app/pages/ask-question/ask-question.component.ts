@@ -35,15 +35,20 @@ export class AskQuestionComponent implements OnInit {
   }
 
   askQuestion(){
-    this._service.addQuestion(this.askForm.value).subscribe(result=>{
-      console.log(result)
-    },
-    ()=>{
-      this._router.navigate(['/sign-in'])
-    },
-    ()=>{
-      this._router.navigate([''])
+    if(this.askForm.valid){
+      this._service.addQuestion(this.askForm.value).subscribe(result=>{
+        console.log(result)
+      },
+      (e)=>{
+        console.log(e.data)
+        this._router.navigate(['/sign-in'])
+      },
+      ()=>{
+        this._router.navigate([''])
+      }
+      )}
+
     }
-    )}
+    
 
 }

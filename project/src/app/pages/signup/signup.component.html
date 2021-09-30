@@ -15,6 +15,11 @@
                 <p>You want to fill out this form</p>
 
             </div>
+            <div class="alert alert-info alert-dismissable" *ngIf="errorMsg">
+                <a class="panel-close close" data-dismiss="alert">×</a> 
+                <i class="fa fa-coffee"></i>
+                {{errorMsg}}.
+            </div>
 
             <div class="sep"></div>
 

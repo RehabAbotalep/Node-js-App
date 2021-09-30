@@ -8,14 +8,14 @@
         <form [formGroup]="askForm" (ngSubmit)="askQuestion()">
             <div class="mb-3">
               <input type="text" class="form-control" placeholder="title" formControlName="title">
-                <span *ngIf="title?.invalid" class="error">
+                <span *ngIf="title?.invalid && title?.touched" class="error">
                     required
                 </span>
             </div>
             <div class="mb-3">
                 <textarea class="form-control" placeholder="Desription" style="height: 100px" formControlName="description">
                 </textarea>
-                <span *ngIf="description?.invalid" class="error">
+                <span *ngIf="description?.invalid && description?.touched" class="error">
                     required
                 </span>
             </div>
@@ -24,7 +24,7 @@
                 <select class="form-control" aria-label="Default select example" multiple name="tags[]" formControlName="tags">
                     <option *ngFor="let tag of allTags" value={{tag._id}} >{{tag.name}}</option>
                 </select>
-                <span *ngIf="tags?.invalid" class="error">
+                <span *ngIf="tags?.invalid && description?.touched" class="error">
                     required
                 </span>
             </div>

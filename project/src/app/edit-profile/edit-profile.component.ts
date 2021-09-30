@@ -13,6 +13,7 @@ export class EditProfileComponent implements OnInit {
   constructor(private _service:GlobalService, private _router:Router) { }
   userData:any
   message:String = ""
+  file:any
 
   editProfileForm = new FormGroup({
     "title" : new FormControl(""),
@@ -43,6 +44,17 @@ export class EditProfileComponent implements OnInit {
       
     })
 
+  }
+
+  onChangeFile(event:any){
+    this.file=event.target.files[0]
+  }
+
+  upload(){
+    this._service.uploadImage(this.file).subscribe(result=>{
+      this.userData = result.data
+
+    }, ()=>{}, ()=>{})
   }
 
 

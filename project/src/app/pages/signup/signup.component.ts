@@ -19,17 +19,15 @@ export class SignupComponent implements OnInit {
     email:"",
     password:""
   }
+  errorMsg:string = ""
   
   handleRegister(data:any){
     if(data.valid){
       this._service.register(this.user).subscribe(data=>{
-        if(data.status == true){
-          this._router.navigate(['']);
-        }
-        console.log(data.message)
+      }, (e)=>{this.errorMsg = "This email is already exists"}, ()=>{
+        this._router.navigateByUrl('/sign-in')
       })
     }
-    //console.log(this.user)
     
   }
 

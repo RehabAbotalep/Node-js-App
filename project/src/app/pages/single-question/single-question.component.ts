@@ -25,10 +25,6 @@ export class SingleQuestionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this._route.queryParams.subscribe(params => {
-    //   this.id = params["questionId"];
-    //   this.getQuestion(this.id)
-    // })
     this.id = this._route.snapshot.paramMap.get('id')
     this.getQuestion(this.id)
   }
@@ -38,7 +34,7 @@ export class SingleQuestionComponent implements OnInit {
       this.question = result.data
       console.log(this.question)
     
-    }, ()=>{this._navigator.navigateByUrl('/sign-in')}, ()=>{})
+    }, ()=>{this._navigator.navigateByUrl('/sign-in')}, ()=>{this.answerForm.reset()})
   }
 
   getQuestion(id:any){

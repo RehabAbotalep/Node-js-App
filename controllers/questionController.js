@@ -18,15 +18,8 @@ class QuestionController{
 
     static async allQuestions(req, res){
         try{
-            //const questions = await Question.find({}, {answers: {$slice : 1}})
             let limit = req.query._limit ?? 20
-            const questions = await Question.find({})
-                .limit(limit)
-                .sort({
-                    views: 'DESC'
-                })
-                .populate('userId','name, email')
-                .populate('tags', '_id, name')
+            const questions = await Question.all(limit)
 
             res.status(200).send({status:true, data:questions, message:"All Questions"})
     
@@ -85,18 +78,13 @@ class QuestionController{
     }
 
     static async submitAnswer(req, res) {
-        try{
-            const question = await Question.findById(req.params.id)
+        try{                 
+            const answer = {answer: req.body.answer, userId: req.user._id}
+
+            const question = await Question.findOneAndUpdate({ _id: req.params.id },{ $push: { answers: answer } })
                                     .populate('userId','name email')
                                     .populate('tags', '_id, name')
                                     .populate('answers.userId', 'name email')
-                                    
-            const answer = {answer: req.body.answer, userId: req.user._id}
-
-            question.answers.push(answer)
-            question.answersCount+=1
-
-            await question.save()
            
             res.status(200).send({status:true, data:question, message:"Question data"})
 

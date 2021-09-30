@@ -82,4 +82,10 @@ export class GlobalService {
   submitAnswer(id:any, data:any):Observable<any>{
     return this._http.post(`${this.baseUrl}questions/${id}/answer`, data)
   }
+
+  uploadImage(file:any):Observable<any>{
+    const formData = new FormData()
+    formData.append('image', file, file.name)
+    return this._http.post(`${this.baseUrl}user/upload-image`, formData)
+  }
 }

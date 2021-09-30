@@ -24,6 +24,7 @@ import { AccountActivationComponent } from './pages/account-activation/account-a
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ForgetComponent } from './pages/password/forget/forget.component';
 import { NewPasswordComponent } from './pages/password/new-password/new-password.component';
+import { Error404Component } from './pages/error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { NewPasswordComponent } from './pages/password/new-password/new-password
     AccountActivationComponent,
     EditProfileComponent,
     ForgetComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,

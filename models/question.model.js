@@ -75,6 +75,19 @@ questionSchema.methods.toJSON = function(){
 }
 
 
+questionSchema.statics.all = async(limit) => {
+    
+    return await Question.find({})
+                .limit(limit)
+                .sort({
+                    views: 'DESC'
+                })
+                .populate('userId','name email')
+                .populate('tags', '_id name')
+    
+}
+
+
 const Question = mongoose.model('questions', questionSchema)
 
 module.exports = Question

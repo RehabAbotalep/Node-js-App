@@ -9,7 +9,7 @@
         <div class="card-deck">
             <div class="card" *ngFor="let tag of tags">
                 <div class="card-block">
-                    <h1 class="card-title"><a href="">{{tag.name}}</a></h1>
+                    <h1 class="card-title"><a routerLink="/tags/{{tag._id}}/questions">{{tag.name}}</a></h1>
                     <p class="card-text">
                         {{tag.description}}.
                     </p>
